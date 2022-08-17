@@ -5,7 +5,7 @@ Python model development kit for MOS.
 ## Contents
 
 * Linear solver wrappers
-* Optimizaiton problem classes
+* Optimization problem classes
 * Optimization solvers and wrappers
 * Algebraic modeling system
 
