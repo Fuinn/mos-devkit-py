@@ -24,6 +24,23 @@ The following environment variables can be used to provide libary names, include
 * CLP: ``MOS_DEVKIT_CLP_LIB``, ``MOS_DEVKIT_CLP_LIB_DIR``, ``MOS_DEVKIT_CLP_INC_DIR``
 * CBC: ``MOS_DEVKIT_CBC_LIB``, ``MOS_DEVKIT_CBC_LIB_DIR``, ``MOS_DEVKIT_CBC_INC_DIR``
 
+### Sample Configuration on Ubuntu
+
+```
+MOS_DEVKIT_IPOPT_LIB=ipopt
+MOS_DEVKIT_IPOPT_INC_DIR=/usr/include/coin
+MOS_DEVKIT_IPOPT_LIB_DIR=/usr/lib
+MOS_DEVKIT_CLP_LIB=Clp
+MOS_DEVKIT_CLP_INC_DIR=/usr/include/coin
+MOS_DEVKIT_CLP_LIB_DIR=/usr/lib
+MOS_DEVKIT_CBC_LIB=CbcSolver
+MOS_DEVKIT_CBC_INC_DIR=/usr/include/coin
+MOS_DEVKIT_CBC_LIB_DIR=/usr/lib
+MOS_DEVKIT_MUMPS_LIB=dmumps_seq
+MOS_DEVKIT_MUMPS_INC_DIR=/usr/include/mumps_seq
+MOS_DEVKIT_MUMPS_LIB_DIR=/usr/lib
+```
+
 ## Local Build
 
 ```
