@@ -17,7 +17,7 @@ pip install -r requirements.txt
 
 ## Environment Variables
 
-The following environment variables can be used to provide libary names, include and library directories for the following wrappers:
+The following environment variables can be used to provide library names, and include and library directories for the following solver interfaces:
 
 * MUMPS: ``MOS_DEVKIT_MUMPS_LIB``, ``MOS_DEVKIT_MUMPS_LIB_DIR``, ``MOS_DEVKIT_MUMPS_INC_DIR``
 * IPOPT: ``MOS_DEVKIT_IPOPT_LIB``, ``MOS_DEVKIT_IPOPT_LIB_DIR``, ``MOS_DEVKIT_IPOPT_INC_DIR``
