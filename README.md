@@ -24,7 +24,7 @@ The following environment variables can be used to provide library names, and in
 * CLP: ``MOS_DEVKIT_CLP_LIB``, ``MOS_DEVKIT_CLP_LIB_DIR``, ``MOS_DEVKIT_CLP_INC_DIR``
 * CBC: ``MOS_DEVKIT_CBC_LIB``, ``MOS_DEVKIT_CBC_LIB_DIR``, ``MOS_DEVKIT_CBC_INC_DIR``
 
-### Sample Configuration on Ubuntu
+**Sample Configuration on Ubuntu**
 
 ```
 MOS_DEVKIT_IPOPT_LIB=ipopt
