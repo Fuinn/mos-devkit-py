@@ -1,3 +1,9 @@
+# Specific
+_dmumps.c
+_cbc.c
+_clp.c
+_ipopt.c
+
 # vscode
 .vscode/
 
@@ -17,9 +23,6 @@ __pycache__/
 
 # C extensions
 *.so
-
-# C files
-*.c
 
 # Distribution / packaging
 .Python

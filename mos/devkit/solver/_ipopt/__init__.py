@@ -1,2 +1,2 @@
-from .cipopt import *
+from ._ipopt import *
 

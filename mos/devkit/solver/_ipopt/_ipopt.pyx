@@ -3,7 +3,7 @@ cimport numpy as np
 
 from libc.string cimport memcpy
 
-cimport cipopt
+cimport _ipopt
 
 np.import_array()
 
@@ -43,7 +43,7 @@ cdef class IpoptContext:
     cdef object eval_grad_f
     cdef object eval_jac_g
     cdef object eval_h
-    cdef cipopt.IpoptProblem problem
+    cdef _ipopt.IpoptProblem problem
     
     def __init__(self,n,m,l,u,gl,gu,eval_f,eval_g,eval_grad_f,eval_jac_g,eval_h):
 
@@ -83,7 +83,7 @@ cdef class IpoptContext:
     def __dealloc__(self):
 
         if self.problem != NULL:
-            cipopt.FreeIpoptProblem(<cipopt.IpoptProblem>self.problem)
+            _ipopt.FreeIpoptProblem(<_ipopt.IpoptProblem>self.problem)
         self.problem = NULL
 
     def add_option(self, key, val):
@@ -94,12 +94,12 @@ cdef class IpoptContext:
         key = key.encode('UTF-8')
 
         if isinstance(val, int):
-            valid = cipopt.AddIpoptIntOption(self.problem, key, val)
+            valid = _ipopt.AddIpoptIntOption(self.problem, key, val)
         elif isinstance(val, str):
             val = val.encode('UTF-8')
-            valid = cipopt.AddIpoptStrOption(self.problem, key, val)
+            valid = _ipopt.AddIpoptStrOption(self.problem, key, val)
         elif isinstance(val, float):
-            valid = cipopt.AddIpoptNumOption(self.problem, key, val)
+            valid = _ipopt.AddIpoptNumOption(self.problem, key, val)
         else:
             raise ValueError('invalid value')
 
@@ -113,7 +113,7 @@ cdef class IpoptContext:
         cdef np.ndarray[double,mode='c'] ngl = self.gl
         cdef np.ndarray[double,mode='c'] ngu = self.gu
         
-        self.problem = cipopt.CreateIpoptProblem(self.n,
+        self.problem = _ipopt.CreateIpoptProblem(self.n,
                                                  <double*>(nl.data),
                                                  <double*>(nu.data),
                                                  self.m, 
@@ -129,7 +129,7 @@ cdef class IpoptContext:
                                                  eval_h_cb)
 
         if self.n:
-            cipopt.SetIntermediateCallback(self.problem,intermediate_cb)
+            _ipopt.SetIntermediateCallback(self.problem,intermediate_cb)
     
     def solve(self,x):
 
@@ -140,7 +140,7 @@ cdef class IpoptContext:
         cdef np.ndarray[double,mode='c'] nmu = np.zeros(self.n)
 
         if self.n:
-            status = cipopt.IpoptSolve(self.problem,
+            status = _ipopt.IpoptSolve(self.problem,
                                        <double*>(nx.data),
                                        NULL,
                                        NULL,

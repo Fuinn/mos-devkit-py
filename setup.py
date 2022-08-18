@@ -25,8 +25,8 @@ ipopt_lib = os.environ.get('MOS_DEVKIT_IPOPT_LIB')
 ipopt_inc_dir = os.environ.get('MOS_DEVKIT_IPOPT_INC_DIR')
 ipopt_lib_dir = os.environ.get('MOS_DEVKIT_IPOPT_LIB_DIR')
 if ipopt_lib:
-    ext_modules += cythonize([Extension(name='mos.devkit.solver._ipopt.cipopt',
-                                        sources=['./mos/devkit/solver/_ipopt/cipopt.pyx'],
+    ext_modules += cythonize([Extension(name='mos.devkit.solver._ipopt._ipopt',
+                                        sources=['./mos/devkit/solver/_ipopt/_ipopt.pyx'],
                                         libraries=[ipopt_lib],
                                         include_dirs=[np.get_include(), ipopt_inc_dir],
                                         library_dirs=[ipopt_lib_dir],
@@ -37,8 +37,8 @@ clp_lib = os.environ.get('MOS_DEVKIT_CLP_LIB')
 clp_inc_dir = os.environ.get('MOS_DEVKIT_CLP_INC_DIR')
 clp_lib_dir = os.environ.get('MOS_DEVKIT_CLP_LIB_DIR')
 if clp_lib:
-    ext_modules += cythonize([Extension(name='mos.devkit.solver._clp.cclp',
-                                        sources=['./mos/devkit/solver/_clp/cclp.pyx'],
+    ext_modules += cythonize([Extension(name='mos.devkit.solver._clp._clp',
+                                        sources=['./mos/devkit/solver/_clp/_clp.pyx'],
                                         libraries=[clp_lib],
                                         include_dirs=[np.get_include(), clp_inc_dir],
                                         library_dirs=[clp_lib_dir],
@@ -49,8 +49,8 @@ cbc_lib = os.environ.get('MOS_DEVKIT_CBC_LIB')
 cbc_inc_dir = os.environ.get('MOS_DEVKIT_CBC_INC_DIR')
 cbc_lib_dir = os.environ.get('MOS_DEVKIT_CBC_LIB_DIR')
 if cbc_lib:
-    ext_modules += cythonize([Extension(name='mos.devkit.solver._cbc.ccbc',
-                                        sources=['./mos/devkit/solver/_cbc/ccbc.pyx'],
+    ext_modules += cythonize([Extension(name='mos.devkit.solver._cbc._cbc',
+                                        sources=['./mos/devkit/solver/_cbc/_cbc.pyx'],
                                         libraries=[cbc_lib],
                                         include_dirs=[np.get_include(), cbc_inc_dir],
                                         library_dirs=[cbc_lib_dir],

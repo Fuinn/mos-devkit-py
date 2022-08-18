@@ -1,1 +1,1 @@
-from .ccbc import *
+from ._cbc import *

@@ -1,7 +1,7 @@
 import numpy as np
 cimport numpy as np
 
-cimport ccbc
+cimport _clp
 
 np.import_array()
 
@@ -18,33 +18,33 @@ cdef ArrayDouble(double* a, int size):
      PyArray_CLEARFLAGS(arr,np.NPY_OWNDATA)
      return arr
 
-class CbcContextError(Exception):
+class ClpContextError(Exception):
     """
-    Cbc context error exception.
+    Clp context error exception.
     """
     def __init__(self,value):
         self.value = value
     def __str__(self):
         return repr(self.value)
 
-cdef class CbcContext:
+cdef class ClpContext:
     """
-    Cbc context class.
+    Clp context class.
     """
     
-    cdef ccbc.Cbc_Model* model
+    cdef _clp.Clp_Simplex* model
     
     def __cinit__(self):
 
-        self.model = ccbc.Cbc_newModel()
+        self.model = _clp.Clp_newModel()
 
     def __dealloc__(self):
 
         if self.model != NULL:
-            ccbc.Cbc_deleteModel(self.model)
+            _clp.Clp_deleteModel(self.model)
         self.model = NULL
 
-    def loadProblem(self, n, A, collb, colub, obj, rowlb, rowub):
+    def loadProblem(self,n,A,collb,colub,obj,rowlb,rowub):
         
         A = csc_matrix(A)
         
@@ -68,7 +68,7 @@ cdef class CbcContext:
         assert(_rowlb.size == A.shape[0])
         assert(_rowub.size == A.shape[0])
 
-        ccbc.Cbc_loadProblem(self.model,
+        _clp.Clp_loadProblem(self.model,
                              n,
                              A.shape[0],
                              <int*>(_start.data),
@@ -80,38 +80,39 @@ cdef class CbcContext:
                              <double*>(_rowlb.data),
                              <double*>(_rowub.data))
 
-    def setInteger(self, flags):
-        
-        if flags.dtype != 'bool':
-            raise CbcContextError('flags must be bool array')
-        if flags.size != ccbc.Cbc_getNumCols(self.model):
-            raise CbcContextError('flags array must of size numcols')
+    def setlogLevel(self,value):
 
-        for i in range(flags.size):
-            if flags[i]:
-                ccbc.Cbc_setInteger(self.model, i)
-
-    def setParameter(self, name, value):
-
-        name = str(name).encode('UTF-8')
-        value = str(value).encode('UTF-8')
-        
-        ccbc.Cbc_setParameter(self.model, name, value)
-
-    def isProvenOptimal(self):
-
-        return ccbc.Cbc_isProvenOptimal(self.model)
+        _clp.Clp_setLogLevel(self.model,value)
 
     def status(self):
 
-        return ccbc.Cbc_status(self.model)
+        return _clp.Clp_status(self.model)
 
-    def solve(self):
+    def initialSolve(self):
         
-        return ccbc.Cbc_solve(self.model)
+        return _clp.Clp_initialSolve(self.model)
 
-    def getColSolution(self):
+    def primalColumnSolution(self):
 
-        n = ccbc.Cbc_getNumCols(self.model)
-        return ArrayDouble(<double*>ccbc.Cbc_getColSolution(self.model),n)
+        n = _clp.Clp_numberColumns(self.model)
+        return ArrayDouble(_clp.Clp_primalColumnSolution(self.model),n)
 
+    def primalRowSolution(self):
+
+        m = _clp.Clp_numberRows(self.model)
+        return ArrayDouble(_clp.Clp_primalRowSolution(self.model),m)
+
+    def dualColumnSolution(self):
+
+        n = _clp.Clp_numberColumns(self.model)
+        return ArrayDouble(_clp.Clp_dualColumnSolution(self.model),n)
+
+    def dualRowSolution(self):
+
+        m = _clp.Clp_numberRows(self.model)
+        return ArrayDouble(_clp.Clp_dualRowSolution(self.model),m)
+
+        
+        
+        
+        
