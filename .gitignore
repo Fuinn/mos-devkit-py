@@ -3,6 +3,7 @@ _dmumps.c
 _cbc.c
 _clp.c
 _ipopt.c
+_eval.c
 
 # vscode
 .vscode/

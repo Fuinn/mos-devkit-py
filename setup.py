@@ -56,6 +56,16 @@ if cbc_lib:
                                         library_dirs=[cbc_lib_dir],
                                         extra_link_args=[])])
 
+# Expression evaluator
+ext_modules += cythonize([Extension(name='mos.devkit.model._eval._eval',
+                                   sources=['./mos/devkit/model/_eval/_eval.pyx',
+                                            './mos/devkit/model/_eval/evaluator.c',
+                                            './mos/devkit/model/_eval/node.c'],
+                                   libraries=[],
+                                   include_dirs=[np.get_include(), './mos/devkit/model/_eval'],
+                                   library_dirs=[],
+                                   extra_link_args=[])])
+
 setup(name='mos-devkit',
       zip_safe=False,
       version='0.1.0',
