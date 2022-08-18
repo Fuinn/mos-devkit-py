@@ -5,7 +5,7 @@ Python model development kit for MOS.
 ## Contents
 
 * Linear solver wrappers
-* Optimizaiton problem classes
+* Optimization problem classes
 * Optimization solvers and wrappers
 * Algebraic modeling system
 
@@ -17,12 +17,29 @@ pip install -r requirements.txt
 
 ## Environment Variables
 
-The following environment variables can be used to provide libary names, include and library directories for the following wrappers:
+The following environment variables can be used to provide library names, and include and library directories for the following solver interfaces:
 
-* MUMPS: MOS_DEVKIT_MUMPS_LIB, MOS_DEVKIT_MUMPS_LIB_DIR, MOS_DEVKIT_MUMPS_INC_DIR
-* IPOPT: MOS_DEVKIT_IPOPT_LIB, MOS_DEVKIT_IPOPT_LIB_DIR, MOS_DEVKIT_IPOPT_INC_DIR
-* CLP: MOS_DEVKIT_CLP_LIB, MOS_DEVKIT_CLP_LIB_DIR, MOS_DEVKIT_CLP_INC_DIR
-* CBC: MOS_DEVKIT_CBC_LIB, MOS_DEVKIT_CBC_LIB_DIR, MOS_DEVKIT_CBC_INC_DIR
+* MUMPS: ``MOS_DEVKIT_MUMPS_LIB``, ``MOS_DEVKIT_MUMPS_LIB_DIR``, ``MOS_DEVKIT_MUMPS_INC_DIR``
+* IPOPT: ``MOS_DEVKIT_IPOPT_LIB``, ``MOS_DEVKIT_IPOPT_LIB_DIR``, ``MOS_DEVKIT_IPOPT_INC_DIR``
+* CLP: ``MOS_DEVKIT_CLP_LIB``, ``MOS_DEVKIT_CLP_LIB_DIR``, ``MOS_DEVKIT_CLP_INC_DIR``
+* CBC: ``MOS_DEVKIT_CBC_LIB``, ``MOS_DEVKIT_CBC_LIB_DIR``, ``MOS_DEVKIT_CBC_INC_DIR``
+
+**Sample Configuration on Ubuntu**
+
+```
+MOS_DEVKIT_IPOPT_LIB=ipopt
+MOS_DEVKIT_IPOPT_INC_DIR=/usr/include/coin
+MOS_DEVKIT_IPOPT_LIB_DIR=/usr/lib
+MOS_DEVKIT_CLP_LIB=Clp
+MOS_DEVKIT_CLP_INC_DIR=/usr/include/coin
+MOS_DEVKIT_CLP_LIB_DIR=/usr/lib
+MOS_DEVKIT_CBC_LIB=CbcSolver
+MOS_DEVKIT_CBC_INC_DIR=/usr/include/coin
+MOS_DEVKIT_CBC_LIB_DIR=/usr/lib
+MOS_DEVKIT_MUMPS_LIB=dmumps_seq
+MOS_DEVKIT_MUMPS_INC_DIR=/usr/include/mumps_seq
+MOS_DEVKIT_MUMPS_LIB_DIR=/usr/lib
+```
 
 ## Local Build
 
