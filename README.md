@@ -5,10 +5,36 @@ Python model development kit for MOS.
 ## Contents
 
 * Linear solver wrappers
+  * ``mos.devkit.linalg.LinSolverMUMPS``
+  * ``mos.devkit.linalg.LinSolverSUPERLU``
+  * ``mos.devkit.linalg.LinSolverUMFPACK``
 * Optimization problem classes
+  * ``mos.devkit.problem.Problem``
+  * ``mos.devkit.problem.LinProblem``
+  * ``mos.devkit.problem.QuadProblem``
+  * ``mos.devkit.problem.MixIntLinProblem``
 * Optimization solvers and wrappers
-* Algebraic modeling system
-
+  * ``mos.devkit.solver.SolverClp``
+  * ``mos.devkit.solver.SolverClpCMD``
+  * ``mos.devkit.solver.SolverCbc``
+  * ``mos.devkit.solver.SolverCbcCMD``
+  * ``mos.devkit.solver.SolverCplexCMD``
+  * ``mos.devkit.solver.SolverIQP``
+  * ``mos.devkit.solver.SolverINLP``
+  * ``mos.devkit.solver.SolverIpopt``
+  * ``mos.devkit.solver.SolverAugL``
+  * ``mos.devkit.solver.SolverNR``
+* Algebraic modeling system with sparse automatic symbolic differentiation (in C)
+  * ``mos.devkit.model.VariableScalar``
+  * ``mos.devkit.model.VariableMatrix``
+  * ``mos.devkit.model.VariableDict``
+  * ``mos.devkit.model.Model``
+  * ``mos.devkit.model.maximize``
+  * ``mos.devkit.model.minimize``
+  * ``mos.devkit.model.sin``
+  * ``mos.devkit.model.cos``
+  * ``mos.devkit.model.sum``
+  
 ## Prerequisites
 
 ```
